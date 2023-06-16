@@ -5,7 +5,7 @@ const humdity = document.querySelector(".humdity");
 const wind = document.querySelector(".wind");
 const button = document.querySelector("#search-btn");
 
-const apiKey = "e0ab29e1a91dafe94e29a46a0f1c4df0";
+const apiKey = "0b152ce4ed600ca156b6c0091e24579c";
 
 button.addEventListener("click", function () {
   const input = document.querySelector(".search-bar").value;
@@ -20,9 +20,9 @@ function getCity(c) {
     let place = val.city;
 
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?apikey=${apiKey}&q=${
-        c === undefined ? place : c
-      }`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${
+        val?.latitude
+      }&lon=${val?.longitude}&appid=${apiKey}&q=${c === undefined ? place : c}`
     )
       .then((res) => res.json())
       .then((data) => weatherData(data));
